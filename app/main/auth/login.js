@@ -96,6 +96,9 @@ angular.module('web').controller('loginCtrl', [
       } else if (t == 'cname') {
         $scope.item.cname = true;
         $scope.item.eptplcname = '';
+      } else if (t == "privateLink"){
+        $scope.item.cname = false;
+        $scope.item.privateLink = "";
       }
     }
 
@@ -272,8 +275,9 @@ angular.module('web').controller('loginCtrl', [
 
       localStorage.setItem(KEY_REMEMBER, $scope.flags.remember);
       const isPrivateLink = $scope.eptplType === "privateLink";
+      console.log("login scope:",$scope);
       if (isPrivateLink) {
-        localStorage.setItem(Const.PRIVATE_LINK, $scope.privateLink);
+        localStorage.setItem(Const.PRIVATE_LINK, $scope.item.privateLink);
       } else {
         localStorage.removeItem(Const.PRIVATE_LINK);
       }
